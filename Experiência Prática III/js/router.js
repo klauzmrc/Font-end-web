@@ -11,12 +11,11 @@ function getHash() {
 }
 
 function parseRoute(hash) {
-    // Remove query string do hash (ex.: "#/projetos?categoria=saude" => "#/projetos")
+
     const [pathOnly] = hash.split("?");
 }
 
 export function navigateTo(hashUrl) {
-    // Garante formato "#/rota"
     const final = hashUrl.startsWith("#/") ? hashUrl : "#/";
     window.location.hash = final;
 }

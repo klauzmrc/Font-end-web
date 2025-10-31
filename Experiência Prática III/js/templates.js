@@ -15,7 +15,7 @@ function getAppRoot() {
 }
 
 function getHashQuery() {
-    // Ex.: "#/projetos?categoria=saude" => retorna { categoria: "saude" }
+    
     const parts = hash.split("?");
     if (parts.length < 2) {
         return {};

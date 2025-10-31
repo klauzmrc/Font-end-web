@@ -18,14 +18,14 @@ export const store = {
         try {
             localStorage.setItem(keyOf(name), JSON.stringify(value));
         } catch {
-            /* storage indisponível */
+            
         }
     },
     remove(name) {
         try {
             localStorage.removeItem(keyOf(name));
         } catch {
-            /* ignore */
+            
         }
     }
 };
