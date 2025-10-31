@@ -13,7 +13,7 @@
     <header class="site-header">
         <div class="container header-inner navbar">
             <div class="branding">
-                <a data-link href="/" aria-label="Página inicial">
+                <a data-link href="#/" aria-label="Página inicial">
                     <img src="assets/img/hero.png" alt="ONG Pela Vida" width="120" height="40">
                 </a>
             </div>
@@ -24,39 +24,36 @@
 
             <nav aria-label="Navegação principal">
                 <ul id="menu-principal" class="nav-list">
-                    <li><a class="nav-link" data-link href="/">Início</a></li>
+                    <li><a class="nav-link" data-link href="#/">Início</a></li>
                     <li class="has-dropdown">
-                        <a class="nav-link" data-link href="/projetos" aria-haspopup="true" aria-expanded="false">Projetos</a>
+                        <a class="nav-link" data-link href="#/projetos" aria-haspopup="true" aria-expanded="false">Projetos</a>
                         <div class="dropdown" role="menu" aria-label="Submenu Projetos">
-                            <a data-link href="/projetos#educacao" role="menuitem">Educação</a>
-                            <a data-link href="/projetos#saude" role="menuitem">Saúde</a>
-                            <a data-link href="/projetos#meio-ambiente" role="menuitem">Meio ambiente</a>
+                            <a data-link href="#/projetos?categoria=educacao" role="menuitem">Educação</a>
+                            <a data-link href="#/projetos?categoria=saude" role="menuitem">Saúde</a>
+                            <a data-link href="#/projetos?categoria=meio-ambiente" role="menuitem">Meio ambiente</a>
                         </div>
                     </li>
-                    <li><a class="nav-link" data-link href="/cadastro">Cadastro</a></li>
+                    <li><a class="nav-link" data-link href="#/cadastro">Cadastro</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- APP ROOT  -->
+    <!-- CONTEÚDO SPA -->
     <main id="app"></main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <p class="mb-0">&copy; <span id="ano">2025</span> ONG Pela Vida. Todos os direitos reservados.</p>
-            <nav aria-label="Redes sociais">
-                <ul class="flex gap-2">
-                    <li><a href="#" rel="noopener" class="nav-link">Instagram</a></li>
-                    <li><a href="#" rel="noopener" class="nav-link">LinkedIn</a></li>
-                    <li><a href="#" rel="noopener" class="nav-link">YouTube</a></li>
-                </ul>
-            </nav>
         </div>
     </footer>
 
     <!-- JS (SPA) -->
     <script type="module" src="js/app.js"></script>
+
+    <noscript>
+        Por favor, habilite JavaScript para navegar pelo site. Sem JS, a navegação SPA não funciona.
+    </noscript>
 </body>
 </html>

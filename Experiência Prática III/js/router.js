@@ -1,27 +1,31 @@
 // js/router.js
+// Rotas suportadas
 const routes = {
-    "/": "home",
-    "/index.html": "home",
-    "/projetos": "projects",
-    "/projetos.html": "projects",
-    "/cadastro": "signup",
-    "/cadastro.html": "signup"
+    "#/": "home",
+    "": "home",
+    "#/projetos": "projects",
+    "#/cadastro": "signup"
 };
 
-function parseRoute(pathname) {
+function getHash() {
 }
 
-export function navigateTo(path) {
-    window.history.pushState({}, "", path);
-    const event = new PopStateEvent("popstate");
-    window.dispatchEvent(event);
+function parseRoute(hash) {
+    // Remove query string do hash (ex.: "#/projetos?categoria=saude" => "#/projetos")
+    const [pathOnly] = hash.split("?");
+}
+
+export function navigateTo(hashUrl) {
+    // Garante formato "#/rota"
+    const final = hashUrl.startsWith("#/") ? hashUrl : "#/";
+    window.location.hash = final;
 }
 
 export function initRouter(onRouteChange) {
     function handle() {
-        const routeKey = parseRoute(window.location.pathname);
+        const routeKey = parseRoute(getHash());
         onRouteChange(routeKey);
     }
-    window.addEventListener("popstate", handle);
+    window.addEventListener("hashchange", handle);
     handle();
 }

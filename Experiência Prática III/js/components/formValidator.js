@@ -97,7 +97,7 @@ function isAdult(dateStr, minAge = 16) {
     let age = today.getFullYear() - dob.getFullYear();
     const m = today.getMonth() - dob.getMonth();
         age--;
-    }
+    }{
     return age >= minAge;
 }
 
@@ -124,49 +124,49 @@ function validateForm(form) {
     if (!nome.value.trim()) {
         ok = false;
         setFieldError(nome, "Informe seu nome completo.");
-        errors.push("Nome incompleto");
+        errors.push("Nome");
     }
     if (!isEmail(email.value)) {
         ok = false;
         setFieldError(email, "E-mail inválido.");
-        errors.push("E-mail inválido");
+        errors.push("E-mail");
     }
     if (!isCPFValid(cpf.value)) {
         ok = false;
         setFieldError(cpf, "CPF inválido.");
-        errors.push("CPF inválido");
+        errors.push("CPF");
     }
     const telOk = /^\(\d{2}\)\s\d{4,5}-\d{4}$/.test(telefone.value.trim());
     if (!telOk) {
         ok = false;
         setFieldError(telefone, "Telefone inválido. Ex.: (11) 98765-4321");
-        errors.push("Telefone inválido");
+        errors.push("Telefone");
     }
     if (!isAdult(nascimento.value, 16)) {
         ok = false;
         setFieldError(nascimento, "Você precisa ter pelo menos 16 anos.");
-        errors.push("Idade mínima não atendida");
+        errors.push("Idade");
     }
     const cepOk = /^\d{5}-\d{3}$/.test(cep.value.trim());
     if (!cepOk) {
         ok = false;
         setFieldError(cep, "CEP inválido. Ex.: 12345-678");
-        errors.push("CEP inválido");
+        errors.push("CEP");
     }
     if (!cidade.value.trim()) {
         ok = false;
         setFieldError(cidade, "Informe a cidade.");
-        errors.push("Cidade não informada");
+        errors.push("Cidade");
     }
     if (!estado.value) {
         ok = false;
         setFieldError(estado, "Selecione o estado (UF).");
-        errors.push("UF não selecionada");
+        errors.push("UF");
     }
     if (!papel.value) {
         ok = false;
         setFieldError(papel, "Selecione uma opção.");
-        errors.push("Perfil não selecionado");
+        errors.push("Perfil");
     }
 
     return { ok, errors };
@@ -197,27 +197,21 @@ export function mountSignupValidation(formSelector) {
         return;
     }
 
-    // Restaura rascunho
     restoreDraft(form);
 
-    // Máscaras em tempo real
     form.addEventListener("input", function (e) {
         const t = e.target;
-        if (!(t instanceof HTMLInputElement)) {
-            return;
+        if (t instanceof HTMLInputElement) {
+            if (t.id === "cpf") t.value = maskCPF(t.value);
+            if (t.id === "telefone") t.value = maskPhone(t.value);
+            if (t.id === "cep") t.value = maskCEP(t.value);
+            if (t.value.trim().length > 0) {
+                clearFieldError(t);
+            }
         }
-        if (t.id === "cpf") t.value = maskCPF(t.value);
-        if (t.id === "telefone") t.value = maskPhone(t.value);
-        if (t.id === "cep") t.value = maskCEP(t.value);
-        // Salva rascunho a cada digitação
         saveDraft(form);
-        // Limpa erro enquanto o usuário corrige
-        if (t.value.trim().length > 0) {
-            clearFieldError(t);
-        }
     });
 
-    // Validação no submit
     form.addEventListener("submit", function (e) {
         const status = document.getElementById("status-form");
         if (status) {
@@ -232,7 +226,6 @@ export function mountSignupValidation(formSelector) {
             showToast(`Verifique: ${errors.join(", ")}`, "warning", 5000);
             return;
         }
-        // Tudo certo: simulação de envio
         e.preventDefault();
         store.remove(DRAFT_KEY);
         if (status) {

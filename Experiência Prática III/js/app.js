@@ -6,22 +6,23 @@ import { showToast } from "./components/ui.js";
 
 (function bootstrap() {
     document.addEventListener("DOMContentLoaded", function () {
-        // Inicializa navegação (hambúrguer, dropdown)
         initNav();
 
-        // Intercepta cliques em <a data-link> para SPA
+        // Intercepta cliques em links com data-link (SPA hash)
         document.body.addEventListener("click", function (e) {
             const link = e.target.closest("a[data-link]");
             if (!link) {
                 return;
             }
-            if (!url.startsWith("http")) {
-                e.preventDefault();
-                navigateTo(url);
+            const isExternal = /^https?:\/\//i.test(url);
+            if (isExternal) {
+                return;
             }
+            e.preventDefault();
+            navigateTo(url);
         });
 
-        // Inicia o roteador: processa a rota atual e renderiza
+        // Inicializa roteador e renderiza a rota atual
         initRouter(async function onRouteChange(route) {
             try {
                 await renderTemplate(route);

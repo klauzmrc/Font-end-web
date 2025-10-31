@@ -18,7 +18,7 @@ export const store = {
         try {
             localStorage.setItem(keyOf(name), JSON.stringify(value));
         } catch {
-            /* storage talvez indisponível (modo privativo) */
+            /* storage indisponível */
         }
     },
     remove(name) {

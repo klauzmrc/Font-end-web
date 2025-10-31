@@ -14,6 +14,20 @@ function getAppRoot() {
     return root;
 }
 
+function getHashQuery() {
+    // Ex.: "#/projetos?categoria=saude" => retorna { categoria: "saude" }
+    const parts = hash.split("?");
+    if (parts.length < 2) {
+        return {};
+    }
+    const query = parts[1];
+    const obj = {};
+    query.split("&").forEach(function (kv) {
+        const [k, v] = kv.split("=");
+    });
+    return obj;
+}
+
 function templateHome() {
     return `
         <div class="container section">
@@ -23,14 +37,14 @@ function templateHome() {
                         <h1 id="titulo-hero">Nossa missão é gerar impacto social sustentável</h1>
                     </div>
                     <div class="col-12">
-                        <figure style="aspect-ratio:16/9; overflow:hidden;">
-                            <img src="assets/img/projeto00.png" alt="Equipe de voluntários em ação em comunidade" style="width:100%; height:100%; object-fit:cover; object-position:center;">
-                            <figcaption class="muted">Atuação em comunidades com foco em educação e saúde.</figcaption>
+                        <figure style="aspect-ratio:16/9; overflow:hidden; border:1px solid var(--color-border); border-radius: var(--radius);">
+                            <img src="assets/img/projeto00.png" alt="Equipe de voluntários em ação em comunidade" loading="eager" style="width:100%; height:100%; object-fit:cover; object-position:center;">
+                            <figcaption class="muted" style="padding:0.5rem;">Atuação em comunidades com foco em educação e saúde.</figcaption>
                         </figure>
                     </div>
                     <div class="col-12">
                         <p>Somos uma organização sem fins lucrativos dedicada a promover educação, saúde e cidadania em comunidades vulneráveis.</p>
-                        <p><a class="btn btn-primary" data-link href="/projetos">Conhecer projetos</a></p>
+                        <p><a class="btn btn-primary" data-link href="#/projetos">Conhecer projetos</a></p>
                     </div>
                 </div>
             </section>
@@ -91,12 +105,13 @@ function templateProjects() {
 
         <div class="container section" aria-labelledby="lista-projetos">
             <h2 id="lista-projetos" class="mt-0">Projetos</h2>
+
             <div class="grid">
                 <article id="educacao" class="col-12 col-6 card" aria-labelledby="proj-educacao">
                     <header><h3 id="proj-educacao">Educação para o Futuro</h3></header>
-                    <figure style="aspect-ratio:16/9; overflow:hidden;">
+                    <figure style="aspect-ratio:16/9; overflow:hidden; border:1px solid var(--color-border); border-radius: var(--radius);">
                         <img src="assets/img/projeto01.png" alt="Crianças em sala com materiais didáticos" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                        <figcaption class="muted">Aulas de reforço e tecnologia para jovens.</figcaption>
+                        <figcaption class="muted" style="padding:0.5rem;">Aulas de reforço e tecnologia para jovens.</figcaption>
                     </figure>
                     <p>Oferece reforço escolar, oficinas de lógica e iniciação em programação.</p>
                     <ul>
@@ -107,14 +122,14 @@ function templateProjects() {
                     <div class="badges">
                         <span class="badge badge--edu">Educação</span>
                     </div>
-                    <p><a class="btn btn-primary" data-link href="/cadastro">Quero participar</a></p>
+                    <p><a class="btn btn-primary" data-link href="#/cadastro">Quero participar</a></p>
                 </article>
 
                 <article id="saude" class="col-12 col-6 card" aria-labelledby="proj-saude">
                     <header><h3 id="proj-saude">Saúde em Movimento</h3></header>
-                    <figure style="aspect-ratio:16/9; overflow:hidden;">
+                    <figure style="aspect-ratio:16/9; overflow:hidden; border:1px solid var(--color-border); border-radius: var(--radius);">
                         <img src="assets/img/projeto02.png" alt="Equipe de saúde em comunidade" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                        <figcaption class="muted">Atendimentos básicos e campanhas de prevenção.</figcaption>
+                        <figcaption class="muted" style="padding:0.5rem;">Atendimentos básicos e campanhas de prevenção.</figcaption>
                     </figure>
                     <p>Realiza triagens, orientações e encaminhamentos em comunidades.</p>
                     <ul>
@@ -125,14 +140,14 @@ function templateProjects() {
                     <div class="badges">
                         <span class="badge badge--saude">Saúde</span>
                     </div>
-                    <p><a class="btn btn-primary" data-link href="/cadastro">Quero participar</a></p>
+                    <p><a class="btn btn-primary" data-link href="#/cadastro">Quero participar</a></p>
                 </article>
 
                 <article id="meio-ambiente" class="col-12 col-6 card" aria-labelledby="proj-meio">
                     <header><h3 id="proj-meio">Meio Ambiente Já</h3></header>
-                    <figure style="aspect-ratio:16/9; overflow:hidden;">
+                    <figure style="aspect-ratio:16/9; overflow:hidden; border:1px solid var(--color-border); border-radius: var(--radius);">
                         <img src="assets/img/projeto03.png" alt="Mutirão de limpeza em área verde" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                        <figcaption class="muted">Ações de conservação e educação ambiental.</figcaption>
+                        <figcaption class="muted" style="padding:0.5rem;">Ações de conservação e educação ambiental.</figcaption>
                     </figure>
                     <p>Mobilizações de limpeza, plantio e educação ambiental em escolas.</p>
                     <ul>
@@ -143,7 +158,7 @@ function templateProjects() {
                     <div class="badges">
                         <span class="badge">Meio ambiente</span>
                     </div>
-                    <p><a class="btn btn-primary" data-link href="/cadastro">Quero participar</a></p>
+                    <p><a class="btn btn-primary" data-link href="#/cadastro">Quero participar</a></p>
                 </article>
             </div>
         </div>
@@ -156,7 +171,7 @@ function templateProjects() {
                 <li>Mentoria em tecnologia</li>
                 <li>Apoio em triagens de saúde</li>
             </ul>
-            <p>Para participar, acesse a página <a data-link href="/cadastro">Cadastro</a> e preencha seus dados.</p>
+            <p>Para participar, acesse a página <a data-link href="#/cadastro">Cadastro</a> e preencha seus dados.</p>
         </div>
 
         <div class="container section info-block" aria-labelledby="doacoes">
@@ -164,7 +179,7 @@ function templateProjects() {
             <p>Você pode apoiar nossos projetos com doações financeiras ou de materiais.</p>
             <p><strong>Opções:</strong> PIX, cartão, boleto ou doações recorrentes.</p>
             <p>Transparência total com relatórios periódicos publicados na página inicial.</p>
-            <p><a class="btn btn-outline" data-link href="/#transparencia">Ver transparência</a></p>
+            <p><a class="btn btn-outline" data-link href="#/">Ver transparência</a></p>
         </div>
     `;
 }
@@ -276,14 +291,14 @@ export async function renderTemplate(routeKey) {
     const root = getAppRoot();
     root.innerHTML = tpl();
 
-    // Pós-render específicos
     if (routeKey === "signup") {
         mountSignupValidation("#cadastro-form");
     }
+
     if (routeKey === "projects") {
-        // Exemplo: feedback quando há hash de categoria
-        if (hash) {
-            showToast(`Categoria selecionada: ${hash.replace("#", "")}`, "info");
+        const q = getHashQuery();
+        if (q.categoria) {
+            showToast(`Categoria: ${q.categoria}`, "info");
         }
     }
 }
