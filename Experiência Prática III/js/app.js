@@ -8,7 +8,7 @@ import { showToast } from "./components/ui.js";
     document.addEventListener("DOMContentLoaded", function () {
         initNav();
 
-        // Intercepta cliques em links com data-link para navegação SPA
+        
         document.body.addEventListener("click", function (e) {
             const link = e.target.closest("a[data-link]");
             if (!link) {
@@ -22,7 +22,7 @@ import { showToast } from "./components/ui.js";
             navigateTo(url);
         });
 
-        // Inicializa roteador e renderiza a rota atual
+       
         initRouter(async function onRouteChange(route) {
             try {
                 await renderTemplate(route);
