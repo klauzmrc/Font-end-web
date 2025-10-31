@@ -1,4 +1,3 @@
-// js/templates.js
 import { mountSignupValidation } from "./components/formValidator.js";
 import { showToast } from "./components/ui.js";
 
@@ -15,7 +14,9 @@ function getAppRoot() {
 }
 
 function getHashQuery() {
-    
+    const hash = (window.location && typeof window.location.hash === "string")
+        ? window.location.hash
+        : "";
     const parts = hash.split("?");
     if (parts.length < 2) {
         return {};
@@ -23,7 +24,12 @@ function getHashQuery() {
     const query = parts[1];
     const obj = {};
     query.split("&").forEach(function (kv) {
+        if (!kv) return;
         const [k, v] = kv.split("=");
+        if (k) {
+            const key = decodeURIComponent(k);
+            obj[key] = val;
+        }
     });
     return obj;
 }
@@ -281,20 +287,34 @@ function templateSignup() {
     `;
 }
 
+// Registro de templates
 const registry = {
     home: templateHome,
     projects: templateProjects,
     signup: templateSignup
 };
 
-export async function renderTemplate(routeKey) {
+// Renderização segura do template
+export async function renderTemplate(routeKey = "home") {
     const root = getAppRoot();
-    root.innerHTML = tpl();
 
+    const templateFn = registry[routeKey];
+
+    if (typeof templateFn !== "function") {
+        console.warn(`[templates] Template não encontrado para a rota "${routeKey}". Usando "home".`);
+        root.innerHTML = registry.home();
+        return;
+    }
+
+    // Injeta HTML
+    root.innerHTML = templateFn();
+
+    // Pós-render: validação do formulário no cadastro
     if (routeKey === "signup") {
         mountSignupValidation("#cadastro-form");
     }
 
+    // Pós-render: toast de categoria em projetos 
     if (routeKey === "projects") {
         const q = getHashQuery();
         if (q.categoria) {

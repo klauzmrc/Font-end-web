@@ -62,7 +62,7 @@ document.addEventListener("input", function (e) {
     }
 });
 
-// Feedback simples no submit usando validação nativa
+
 document.addEventListener("submit", function (e) {
     const form = e.target;
     if (!(form instanceof HTMLFormElement)) {

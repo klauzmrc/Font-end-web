@@ -8,28 +8,33 @@ import { showToast } from "./components/ui.js";
     document.addEventListener("DOMContentLoaded", function () {
         initNav();
 
-        
+
         document.body.addEventListener("click", function (e) {
-            const link = e.target.closest("a[data-link]");
-            if (!link) {
+
+            const a = e.target instanceof Element ? e.target.closest("a") : null;
+            if (!a) {
                 return;
             }
-            const isExternal = /^https?:\/\//i.test(url);
-            if (isExternal) {
-                return;
-            }
+
+
+
+
+
+
             e.preventDefault();
-            navigateTo(url);
+            navigateTo(a.getAttribute("href"));
         });
 
-       
-        initRouter(async function onRouteChange(route) {
+
+        initRouter(async function onRouteChange(routeKey) {
             try {
-                await renderTemplate(route);
+                await renderTemplate(routeKey);
             } catch (err) {
                 console.error(err);
                 showToast("Não foi possível carregar esta seção agora. Tente novamente.", "warning");
             }
         });
+
+
     });
 })();

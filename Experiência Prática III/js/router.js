@@ -1,6 +1,3 @@
-// js/router.js
-
-
 const routes = {
     "#/": "home",
     "": "home",

@@ -1,4 +1,3 @@
-// js/store.js
 const NAMESPACE = "ong-pela-vida";
 
 function keyOf(name) {
