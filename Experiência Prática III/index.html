@@ -13,7 +13,7 @@
     <header class="site-header">
         <div class="container header-inner navbar">
             <div class="branding">
-                <a href="index.html" aria-label="Página inicial">
+                <a data-link href="/" aria-label="Página inicial">
                     <img src="assets/img/hero.png" alt="ONG Pela Vida" width="120" height="40">
                 </a>
             </div>
@@ -24,104 +24,23 @@
 
             <nav aria-label="Navegação principal">
                 <ul id="menu-principal" class="nav-list">
-                    <li><a class="nav-link" href="index.html" aria-current="page">Início</a></li>
+                    <li><a class="nav-link" data-link href="/">Início</a></li>
                     <li class="has-dropdown">
-                        <a class="nav-link" href="projetos.html" aria-haspopup="true" aria-expanded="false">Projetos</a>
+                        <a class="nav-link" data-link href="/projetos" aria-haspopup="true" aria-expanded="false">Projetos</a>
                         <div class="dropdown" role="menu" aria-label="Submenu Projetos">
-                            <a href="projetos.html#educacao" role="menuitem">Educação</a>
-                            <a href="projetos.html#saude" role="menuitem">Saúde</a>
-                            <a href="projetos.html#meio-ambiente" role="menuitem">Meio ambiente</a>
+                            <a data-link href="/projetos#educacao" role="menuitem">Educação</a>
+                            <a data-link href="/projetos#saude" role="menuitem">Saúde</a>
+                            <a data-link href="/projetos#meio-ambiente" role="menuitem">Meio ambiente</a>
                         </div>
                     </li>
-                    <li><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+                    <li><a class="nav-link" data-link href="/cadastro">Cadastro</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN -->
-    <main id="conteudo">
-        <!-- HERO -->
-        <div class="container section">
-            <section aria-labelledby="titulo-hero">
-                <div class="grid">
-                    <div class="col-12">
-                        <h1 id="titulo-hero">Nossa missão é gerar impacto social sustentável</h1>
-                    </div>
-
-                    <div class="col-12">
-                        <figure>
-                            <img src="assets/img/projeto00.png" alt="Equipe de voluntários em ação em comunidade" loading="eager" width="1280" height="720">
-                            <figcaption class="muted">Atuação em comunidades com foco em educação e saúde.</figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="col-12">
-                        <p>Somos uma organização sem fins lucrativos dedicada a promover educação, saúde e cidadania em comunidades vulneráveis.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- SOBRE NÓS -->
-        <div class="container section">
-            <section aria-labelledby="sobre">
-                <h2 id="sobre" class="mt-0">Missão, visão e valores</h2>
-
-                <div class="grid">
-                    <article class="col-12 col-4 card">
-                        <h3>Missão</h3>
-                        <p>Promover transformação social por meio de projetos de alto impacto.</p>
-                    </article>
-
-                    <article class="col-12 col-4 card">
-                        <h3>Visão</h3>
-                        <p>Ser referência em transparência, gestão e resultados no terceiro setor.</p>
-                    </article>
-
-                    <article class="col-12 col-4 card">
-                        <h3>Valores</h3>
-                        <ul>
-                            <li>Transparência</li>
-                            <li>Empatia</li>
-                            <li>Responsabilidade</li>
-                            <li>Colaboração</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-        </div>
-
-        <!-- CONTATO -->
-        <div class="container section">
-            <section aria-labelledby="contato">
-                <h2 id="contato" class="mt-0">Informações de contato</h2>
-                <address class="card">
-                    <p><strong>Endereço:</strong> Rua Brazil, 249 — Centro — Rio de Janeiro/RJ</p>
-                    <p><strong>E-mail:</strong> <a href="mailto:contato@pelavida.org">contato@pelavida.org</a></p>
-                    <p><strong>Telefone:</strong> <a href="tel:+550000000000">(00) 00000-0000</a></p>
-                </address>
-            </section>
-        </div>
-    </main>
-
-    <!-- ASIDE TRANSPARÊNCIA -->
-    <aside aria-labelledby="transparencia">
-        <div class="container section">
-            <div class="grid">
-                <div class="col-12 col-6">
-                    <h2 id="transparencia" class="mt-0">Transparência</h2>
-                    <p class="muted">Acesse nossos relatórios anuais e prestação de contas.</p>
-                </div>
-                <div class="col-12 col-6 card">
-                    <ul>
-                        <li><a href="#" rel="noopener">Relatório 2023 (PDF)</a></li>
-                        <li><a href="#" rel="noopener">Prestação de contas (HTML)</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </aside>
+    <!-- APP ROOT  -->
+    <main id="app"></main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
@@ -137,8 +56,7 @@
         </div>
     </footer>
 
-    <!-- JS -->
-    <script src="js/nav.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <!-- JS (SPA) -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

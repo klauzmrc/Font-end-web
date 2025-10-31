@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+// js/components/nav.js
+export function initNav() {
     const header = document.querySelector(".site-header");
     const toggle = document.querySelector(".nav-toggle");
-    const menu = document.getElementById("menu-principal");
     const dropdownParents = document.querySelectorAll(".has-dropdown > .nav-link");
 
-    if (toggle && header && menu) {
+    if (toggle && header) {
         toggle.addEventListener("click", function () {
             const opened = header.classList.toggle("nav-open");
             toggle.setAttribute("aria-expanded", opened ? "true" : "false");
@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".show-dropdown").forEach(function (el) {
                 el.classList.remove("show-dropdown");
             });
-            if (header.classList.contains("nav-open")) {
+            if (header && header.classList.contains("nav-open")) {
                 header.classList.remove("nav-open");
                 if (toggle) toggle.setAttribute("aria-expanded", "false");
             }
         }
     });
-});
+}
