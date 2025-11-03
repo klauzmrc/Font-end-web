@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ONG Pela Vida — Cadastro</title>
     <meta name="description" content="Cadastre-se como voluntário ou apoiador.">
     <style>
-        /* ===========================
-           Base e variáveis (mobile-first)
-        ============================ */
         :root {
             --bg: #f7fafc;
             --text: #1a1a1a;
             --muted: #5f6b76;
 
-            --brand: #155e75;          /* header/rodapé */
+            --brand: #155e75;
             --brand-contrast: #ffffff;
-            --surface: #ffffff;         /* cartões/seções */
-            --surface-alt: #e6f0f4;     /* realce leve do main */
-            --accent: #0ea5e9;          /* links/realces */
+            --surface: #ffffff;
+            --surface-alt: #e6f0f4;
+            --accent: #0ea5e9;
             --border: #d7dee5;
 
             --space-1: 0.25rem;
@@ -31,7 +29,10 @@
             --max-w: 72rem;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -39,24 +40,47 @@
             background: var(--bg);
             line-height: 1.6;
         }
-        img { display: block; max-width: 100%; height: auto; }
-        h1, h2, h3 { margin: 0 0 var(--space-3); line-height: 1.2; }
-        p, ul, figure { margin: 0 0 var(--space-4); }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover, a:focus { text-decoration: underline; }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0 0 var(--space-3);
+            line-height: 1.2;
+        }
+
+        p,
+        ul,
+        figure {
+            margin: 0 0 var(--space-4);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            text-decoration: underline;
+        }
 
         .container {
             width: min(100% - 2rem, var(--max-w));
             margin-inline: auto;
         }
 
-        /* ===========================
-           Header com Flexbox
-        ============================ */
+
         header {
             background: var(--brand);
             color: var(--brand-contrast);
         }
+
         .header-inner {
             display: flex;
             align-items: center;
@@ -64,12 +88,14 @@
             gap: var(--space-4);
             padding: var(--space-4) 0;
         }
+
         .branding a {
             display: inline-flex;
             align-items: center;
             gap: var(--space-2);
             color: var(--brand-contrast);
         }
+
         nav[aria-label="Navegação principal"] ul {
             list-style: none;
             display: flex;
@@ -78,29 +104,31 @@
             padding: 0;
             flex-wrap: wrap;
         }
+
         nav[aria-label="Navegação principal"] a {
             display: inline-block;
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
             color: var(--brand-contrast);
         }
+
         nav[aria-label="Navegação principal"] a[aria-current="page"] {
-            background: rgba(255,255,255,0.18);
+            background: rgba(255, 255, 255, 0.18);
         }
 
-        /* ===========================
-           Main e seções (cartões)
-        ============================ */
+
         main {
             padding-block: var(--space-6);
             background: var(--surface-alt);
         }
-        main > header {
+
+        main>header {
             background: transparent;
             color: inherit;
             padding: 0;
             margin-bottom: var(--space-5);
         }
+
         section {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -109,9 +137,7 @@
             margin-bottom: var(--space-5);
         }
 
-        /* ===========================
-           Formulário com Flexbox
-        ============================ */
+
         form {
             display: flex;
             flex-direction: column;
@@ -123,8 +149,8 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: var(--space-4);
-            display: flex;              /* Flexbox no fieldset */
-            flex-wrap: wrap;            /* Quebra de linha para itens */
+            display: flex;
+            flex-wrap: wrap;
             gap: var(--space-4);
         }
 
@@ -133,13 +159,13 @@
             font-weight: 600;
         }
 
-        /* Cada grupo (div) é um item flex */
-        fieldset > div {
+
+        fieldset>div {
             display: flex;
             flex-direction: column;
             gap: var(--space-2);
-            flex: 1 1 100%;             /* 1 coluna no mobile */
-            min-width: 240px;           /* evita colapsar demais */
+            flex: 1 1 100%;
+            min-width: 240px;
         }
 
         label {
@@ -172,19 +198,20 @@
             font-size: 0.9rem;
         }
 
-        /* Estados nativos */
+
         input:invalid,
         select:invalid,
         textarea:invalid {
             border-color: #c62828;
         }
+
         input:valid {
             border-color: #2e7d32;
         }
 
-        /* Ações */
+
         button {
-            align-self: flex-start;      /* botão alinhado à esquerda */
+            align-self: flex-start;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -197,22 +224,24 @@
             font-weight: 700;
             cursor: pointer;
         }
-        button:hover { opacity: 0.95; }
+
+        button:hover {
+            opacity: 0.95;
+        }
 
         #status-form {
             font-weight: 600;
             color: var(--muted);
         }
 
-        /* ===========================
-           Footer com Flexbox
-        ============================ */
+
         footer {
             background: var(--brand);
             color: var(--brand-contrast);
             padding: var(--space-5) 0;
             margin-top: var(--space-6);
         }
+
         .footer-inner {
             display: flex;
             flex-direction: column;
@@ -220,16 +249,14 @@
             align-items: flex-start;
         }
 
-        /* ===========================
-           Responsivo (duas colunas)
-        ============================ */
+
         @media (min-width: 768px) {
-            /* Campos em duas colunas quando houver espaço */
-            fieldset > div {
+
+            fieldset>div {
                 flex: 1 1 calc(50% - var(--space-4));
             }
 
-            /* Campos longos ocupam a linha toda */
+
             #endereco,
             #mensagem {
                 width: 100%;
@@ -243,6 +270,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-inner container">
@@ -277,23 +305,28 @@
 
                         <div>
                             <label for="nome">Nome completo</label>
-                            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" required>
+                            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name"
+                                required>
                         </div>
 
                         <div>
                             <label for="email">E-mail</label>
-                            <input id="email" name="email" type="email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+                            <input id="email" name="email" type="email" placeholder="seuemail@exemplo.com"
+                                autocomplete="email" required>
                         </div>
 
                         <div>
                             <label for="cpf">CPF</label>
-                            <input id="cpf" name="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" aria-describedby="dica-cpf" required>
+                            <input id="cpf" name="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00"
+                                maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" aria-describedby="dica-cpf" required>
                             <small id="dica-cpf">Formato: 000.000.000-00</small>
                         </div>
 
                         <div>
                             <label for="telefone">Telefone</label>
-                            <input id="telefone" name="telefone" type="tel" inputmode="tel" placeholder="(00) 00000-0000" maxlength="15" pattern="\(\d{2}\)\s\d{5}-\d{4}" aria-describedby="dica-fone" required>
+                            <input id="telefone" name="telefone" type="tel" inputmode="tel"
+                                placeholder="(00) 00000-0000" maxlength="15" pattern="\(\d{2}\)\s\d{5}-\d{4}"
+                                aria-describedby="dica-fone" required>
                             <small id="dica-fone">Formato: (00) 00000-0000</small>
                         </div>
 
@@ -308,12 +341,14 @@
 
                         <div>
                             <label for="endereco">Endereço</label>
-                            <input id="endereco" name="endereco" type="text" placeholder="Rua, número e complemento" autocomplete="street-address" required>
+                            <input id="endereco" name="endereco" type="text" placeholder="Rua, número e complemento"
+                                autocomplete="street-address" required>
                         </div>
 
                         <div>
                             <label for="cep">CEP</label>
-                            <input id="cep" name="cep" type="text" inputmode="numeric" placeholder="00000-000" maxlength="9" pattern="\d{5}-\d{3}" aria-describedby="dica-cep" required>
+                            <input id="cep" name="cep" type="text" inputmode="numeric" placeholder="00000-000"
+                                maxlength="9" pattern="\d{5}-\d{3}" aria-describedby="dica-cep" required>
                             <small id="dica-cep">Formato: 00000-000</small>
                         </div>
 
@@ -326,13 +361,33 @@
                             <label for="estado">Estado (UF)</label>
                             <select id="estado" name="estado" autocomplete="address-level1" required>
                                 <option value="" selected disabled>Selecione</option>
-                                <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
-                                <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
-                                <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
-                                <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
-                                <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
-                                <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
-                                <option>SP</option><option>SE</option><option>TO</option>
+                                <option>AC</option>
+                                <option>AL</option>
+                                <option>AP</option>
+                                <option>AM</option>
+                                <option>BA</option>
+                                <option>CE</option>
+                                <option>DF</option>
+                                <option>ES</option>
+                                <option>GO</option>
+                                <option>MA</option>
+                                <option>MT</option>
+                                <option>MS</option>
+                                <option>MG</option>
+                                <option>PA</option>
+                                <option>PB</option>
+                                <option>PR</option>
+                                <option>PE</option>
+                                <option>PI</option>
+                                <option>RJ</option>
+                                <option>RN</option>
+                                <option>RS</option>
+                                <option>RO</option>
+                                <option>RR</option>
+                                <option>SC</option>
+                                <option>SP</option>
+                                <option>SE</option>
+                                <option>TO</option>
                             </select>
                         </div>
                     </fieldset>
@@ -352,7 +407,8 @@
 
                         <div>
                             <label for="mensagem">Mensagem (opcional)</label>
-                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte brevemente seu interesse..."></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="4"
+                                placeholder="Conte brevemente seu interesse..."></textarea>
                         </div>
                     </fieldset>
 
@@ -374,4 +430,5 @@
 
     <script src="js/js-script.js" defer></script>
 </body>
+
 </html>
